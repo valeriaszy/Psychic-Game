@@ -6,27 +6,34 @@ var wins = 0;
 var score = 0;
 var losses = 0;
 var guessesLeft = 9;
-var lettersGuessed = [];
-var computerGuess = [];
+var lettersGuessed = [0];
+var computerGuess = [0];
 
 
-if ((playerGuess === computerGuess[0]) && (guessesLeft > 0)) {
-	wins++;
+if ((playerChoice === computerGuess[0]) && (guessesLeft > 0)) {
 	guessesLeft = 9;
 	lettersGuessed.length = 0;
 	computerGuess.length = 0;
-	var compGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+	var compGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 	computerGuess.push(compGuess);
-	console.log(computerGuess[0]);
-}
-
-document.onkeyup = function(event) {
-	var playerGuess = event.key;
-	lettersGuessed.push(playerGuess);
     console.log(computerGuess[0]);
 }
+else if ((playerChoice !== computerGuess[0]) && (guessesLeft > 0)) {
+	guessesLeft = guessesLeft-1;
+}
 
-window.onload = function() {
-	var compGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+else {
+	guessesLeft = 9;
+	lettersGuessed.length = 0;
+	computerGuess.length = 0;
+	var compGuess = computerChoice[Math.floor(Math.random() * computerChoices.length)];
+	console.log(computerGuess[0]);
+
+document.onkeyup = function(event) {
+	var playerChoice = event.key;
+	lettersGuessed.push(playerChoice);
+    console.log(computerGuess[0]);
+}
+	var compGuess = computerChoice[Math.floor(Math.random() * computerChoice.length)];
 	computerGuess.push(compGuess);
 	console.log(computerGuess[0]);
